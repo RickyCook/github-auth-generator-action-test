@@ -2,14 +2,13 @@ on: push
 jobs:
   Run:
     runs-on: ubuntu-latest
-    env:
-      DEBUG=githubAuthGenerator
     steps:
       - id: token
         name: Generate authorization
         uses: RickyCook/github-auth-generator@1.0.0
         with:
           tokenType: installationAuthorization
+          debug: true
           appId: '143118'
           privateKey: ${{ secrets.appPrivateKey }}
           repoName: RickyCook/github-auth-generator-action-test-target
