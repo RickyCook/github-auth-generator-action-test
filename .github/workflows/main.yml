@@ -5,9 +5,10 @@ jobs:
     steps:
       - id: token
         name: Generate authorization
-        uses: RickyCook/github-auth-generator@1.0.0
+        uses: RickyCook/github-auth-generator@1.1.0
         with:
-          tokenType: installationAuthorization
+          tokenType: installation
+          authorization: true
           debug: true
           appId: '143118'
           privateKey: ${{ secrets.appPrivateKey }}
