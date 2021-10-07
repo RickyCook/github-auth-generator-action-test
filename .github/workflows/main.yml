@@ -1,0 +1,21 @@
+on: push
+jobs:
+  Run:
+    runs-on: ubuntu-latest
+    steps:
+      - id: token
+        name: Generate authorization
+        uses: rickycook/github-auth-generator@1.0.0
+        with:
+          tokenType: installationAuthorization
+          appId: '143118'
+          privateKey: ${{ secrets.appPrivateKey }}
+          repoName: RickyCook/github-auth-generator-action-test-target
+      - name: Check token works
+        env:
+          AUTH: ${{ steps.token.outputs.token }}
+        run: curl -H "Authorization:$AUTH" https://api.github.com/repos/RickyCook/github-auth-generator-action-test-target
+      - name: Ensure token set as secret
+        env:
+          AUTH: ${{ steps.token.outputs.token }}
+        run: echo $AUTH
