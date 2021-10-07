@@ -5,7 +5,7 @@ jobs:
     steps:
       - id: token
         name: Generate authorization
-        uses: RickyCook/github-auth-generator@56df3f814c00ac2b922d1be82caf728189c5d965
+        uses: RickyCook/github-auth-generator@6a328a69be3c96adb99a865f3b26e94043492f43
         with:
           tokenType: installation
           authorization: true
